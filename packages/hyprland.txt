@@ -1,0 +1,34 @@
+# Hyprland
+hyprland
+hyprlock
+hypridle
+hyprpicker
+
+# QuickShell (replaces network-manager-applet)
+quickshell
+
+# Wayland tools
+grim
+slurp
+wl-clipboard
+cliphist
+wofi
+
+# Status bar
+waybar
+
+# Notifications
+libnotify
+
+# Screenshot tools (using satty instead of swappy)
+satty
+tesseract
+tesseract-data-eng
+
+# Wallpaper
+swww
+
+# Input methods
+fcitx5
+fcitx5-gtk
+fcitx5-qt

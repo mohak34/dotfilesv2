@@ -1,0 +1,51 @@
+# Base packages
+git
+curl
+wget
+rsync
+base-devel
+zsh
+tmux
+gum
+
+# Network
+networkmanager
+iwd
+bluez
+bluez-utils
+blueman
+
+# Media
+pipewire
+pipewire-pulse
+pipewire-alsa
+pavucontrol
+pamixer
+
+# System
+btop
+fastfetch
+brightnessctl
+polkit-kde-agent
+
+# Utils
+eza
+fzf
+zoxide
+lazygit
+neovim
+vim
+unzip
+zip
+unrar
+
+# Fonts
+ttf-jetbrains-mono-nerd
+ttf-font-awesome
+noto-fonts-emoji
+papirus-icon-theme
+
+# XDG
+xdg-utils
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk

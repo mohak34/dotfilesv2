@@ -1,0 +1,11 @@
+# AUR packages
+auto-cpufreq
+grimblast-git
+bibata-cursor-theme
+lmstudio
+localsend
+ttf-ms-win11-auto
+vesktop-bin
+zen-browser-bin
+visual-studio-code-bin
+wlogout
