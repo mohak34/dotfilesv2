@@ -1,0 +1,33 @@
+# theme = "Cutie Pro"
+# theme = "Cursor Dark"
+theme = "flexoki-custom"
+# theme = "Flexoki Dark"
+# theme = "Github Dark"
+# theme = Kanagawa Wave
+# theme = "Nord Wave"
+# theme = "Nvim Dark"
+# theme = "Oxocarbon"
+# theme = "Solarized Osaka Night"
+# theme = "Zenwritten Dark"
+
+font-family = JetBrainsMono Nerd Font
+font-size = 11
+font-style = "bold"
+
+mouse-hide-while-typing = true
+title = ""
+gtk-titlebar = false
+copy-on-select = clipboard
+confirm-close-surface = false
+shell-integration-features = no-cursor,sudo,no-title
+
+keybind = alt+zero=unbind
+keybind = alt+one=unbind
+keybind = alt+two=unbind
+keybind = alt+three=unbind
+keybind = alt+four=unbind
+keybind = alt+five=unbind
+keybind = alt+six=unbind
+keybind = alt+seven=unbind
+keybind = alt+eight=unbind
+keybind = alt+nine=unbind

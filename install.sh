@@ -10,7 +10,6 @@ source "$DOTFILES_INSTALL/helpers/all.sh"
 source "$DOTFILES_INSTALL/preflight/all.sh"
 source "$DOTFILES_INSTALL/packaging/all.sh"
 source "$DOTFILES_INSTALL/config/all.sh"
-source "$DOTFILES_INSTALL/themes/all.sh"
 source "$DOTFILES_INSTALL/post-install/all.sh"
 
 main() {
@@ -19,8 +18,9 @@ main() {
   run_preflight
   run_packaging
   run_config
+  run_post_install
   
-  log_success "Installation complete! Please log out and log back in for all changes to take effect."
+  log_success "Installation complete!"
 }
 
 main "$@"

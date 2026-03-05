@@ -1,0 +1,16 @@
+module qs.Modules.ControlCenter
+ControlCenter        ControlCenter.qml
+SliderControl        SliderControl.qml
+ToggleTile           ToggleTile.qml
+AudioOutputSection   AudioOutputSection.qml
+AudioInputSection    AudioInputSection.qml
+WiFiSection          WiFiSection.qml
+VpnSection           VpnSection.qml
+BluetoothSection     BluetoothSection.qml
+WallpaperSection     WallpaperSection.qml
+SettingsSection      SettingsSection.qml
+SettingsPill         SettingsPill.qml
+SettingsAppearance   SettingsAppearance.qml
+SettingsBar          SettingsBar.qml
+SettingsPopups       SettingsPopups.qml
+SettingsPerformance  SettingsPerformance.qml

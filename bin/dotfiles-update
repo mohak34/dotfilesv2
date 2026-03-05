@@ -1,0 +1,106 @@
+#!/bin/bash
+# dotfiles-update - Update dotfiles to latest version
+# 1. Pull git changes
+# 2. Run new migrations
+# 3. Copy configs to ~/.config/
+
+set -euo pipefail
+
+DOTFILES_PATH="${DOTFILES_PATH:-$HOME/.local/share/dotfilesv2}"
+MIGRATIONS_DIR="$HOME/.local/state/dotfiles/migrations"
+
+echo "Updating dotfiles..."
+
+cd "$DOTFILES_PATH"
+
+echo "Pulling latest changes..."
+git fetch origin
+git pull origin main
+
+echo "Running migrations..."
+mkdir -p "$MIGRATIONS_DIR"
+
+for migration in migrations/*; do
+  [[ -f "$migration" ]] || continue
+  
+  migration_name=$(basename "$migration")
+  
+  if [[ -f "$MIGRATIONS_DIR/$migration_name" ]]; then
+    continue
+  fi
+  
+  echo "Running migration: $migration_name"
+  bash "$migration"
+  touch "$MIGRATIONS_DIR/$migration_name"
+done
+
+echo "Updating configs..."
+
+copy_config_dir() {
+  local src_dir="$DOTFILES_PATH/config/$1"
+  local dest_dir="$HOME/.config/$1"
+  
+  [[ -d "$src_dir" ]] || return
+  
+  mkdir -p "$(dirname "$dest_dir")"
+  
+  if [[ -d "$dest_dir" ]]; then
+    rsync -av --delete "$src_dir/" "$dest_dir/"
+  else
+    cp -r "$src_dir" "$dest_dir"
+  fi
+}
+
+copy_hypr_core_only() {
+  local src_dir="$DOTFILES_PATH/config/hypr"
+  local dest_dir="$HOME/.config/hypr"
+  
+  [[ -d "$src_dir" ]] || return
+  
+  mkdir -p "$dest_dir/core"
+  
+  for file in "$src_dir"/core/*; do
+    [[ -f "$file" ]] || continue
+    cp "$file" "$dest_dir/core/"
+  done
+  
+  if [[ -d "$src_dir/local" ]]; then
+    mkdir -p "$dest_dir/local"
+  fi
+  
+  cp "$src_dir/hyprland.conf" "$dest_dir/"
+  cp "$src_dir/hypridle.conf" "$dest_dir/"
+  cp "$src_dir/hyprlock.conf" "$dest_dir/"
+  
+  echo "Updated hypr config (core files)"
+}
+
+copy_config_dir "quickshell"
+copy_config_dir "ghostty"
+copy_config_dir "btop"
+copy_config_dir "dotfiles"
+copy_config_dir "wlogout"
+copy_config_dir "environment.d"
+copy_config_dir "opencode"
+
+copy_hypr_core_only
+
+if [[ -f "$DOTFILES_PATH/.tmux.conf" ]]; then
+  cp "$DOTFILES_PATH/.tmux.conf" "$HOME/.tmux.conf"
+  echo "Updated .tmux.conf"
+fi
+
+if [[ -f "$DOTFILES_PATH/.zshrc" ]]; then
+  cp "$DOTFILES_PATH/.zshrc" "$HOME/.zshrc"
+  echo "Updated .zshrc"
+fi
+
+echo "Copying scripts to ~/.local/bin/scripts..."
+mkdir -p "$HOME/.local/bin/scripts"
+for script in "$DOTFILES_PATH"/bin/scripts/*; do
+  [[ -f "$script" ]] || continue
+  cp "$script" "$HOME/.local/bin/scripts/"
+  chmod +x "$script"
+done
+
+echo "Dotfiles updated successfully!"

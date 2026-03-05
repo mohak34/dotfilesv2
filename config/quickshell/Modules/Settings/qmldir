@@ -1,0 +1,8 @@
+module qs.Modules.Settings
+SettingsPanel SettingsPanel.qml
+SettingsTabButton SettingsTabButton.qml
+SettingsTogglePill SettingsTogglePill.qml
+AppearanceSettings AppearanceSettings.qml
+BarSettings BarSettings.qml
+PopupSettings PopupSettings.qml
+PerformanceSettings PerformanceSettings.qml

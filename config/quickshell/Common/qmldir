@@ -1,0 +1,3 @@
+module qs.Common
+singleton Appearance Appearance.qml
+singleton Theme Theme.qml

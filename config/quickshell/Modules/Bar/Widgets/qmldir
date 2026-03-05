@@ -1,0 +1,11 @@
+module qs.Modules.Bar.Widgets
+Clock Clock.qml
+Workspaces Workspaces.qml
+AudioWidget AudioWidget.qml
+Battery Battery.qml
+NetworkWidget NetworkWidget.qml
+BluetoothWidget BluetoothWidget.qml
+CpuRamMonitor CpuRamMonitor.qml
+SystemTray SystemTray.qml
+NotificationBell NotificationBell.qml
+MediaPlayer MediaPlayer.qml

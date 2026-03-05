@@ -55,24 +55,60 @@ copy_config_file() {
 }
 
 install_configs() {
-	echo "Installing configurations..."
-
-	local config_dirs=(
-		"hypr"
-		"waybar"
-		"wofi"
-		"ghostty"
-		"btop"
-		"tmux"
-		"zsh"
-		"git"
-	)
-
-	for dir in "${config_dirs[@]}"; do
-		if [[ -d "$DOTFILES_PATH/config/$dir" ]]; then
-			copy_config_dir "$dir"
-		fi
-	done
-
-	echo "Configurations installed!"
+  echo "Installing configurations..."
+  
+  local config_dirs=(
+    "hypr"
+    "quickshell"
+    "ghostty"
+    "btop"
+    "dotfiles"
+    "wlogout"
+    "environment.d"
+    "opencode"
+  )
+  
+  for dir in "${config_dirs[@]}"; do
+    if [[ -d "$DOTFILES_PATH/config/$dir" ]]; then
+      copy_config_dir "$dir"
+    fi
+  done
+  
+  if [[ -f "$DOTFILES_PATH/.tmux.conf" ]]; then
+    local dest_tmux="$HOME/.tmux.conf"
+    if [[ -f "$dest_tmux" ]]; then
+      backup_config "$DOTFILES_PATH/.tmux.conf" "$dest_tmux"
+    fi
+    cp "$DOTFILES_PATH/.tmux.conf" "$dest_tmux"
+    echo "Copied .tmux.conf"
+  fi
+  
+  if [[ -f "$DOTFILES_PATH/.zshrc" ]]; then
+    local dest_zshrc="$HOME/.zshrc"
+    if [[ -f "$dest_zshrc" ]]; then
+      backup_config "$DOTFILES_PATH/.zshrc" "$dest_zshrc"
+    fi
+    cp "$DOTFILES_PATH/.zshrc" "$dest_zshrc"
+    echo "Copied .zshrc"
+  fi
+  
+  echo "Installing scripts..."
+  mkdir -p "$HOME/.local/bin/scripts"
+  if [[ -d "$DOTFILES_PATH/bin/scripts" ]]; then
+    for script in "$DOTFILES_PATH"/bin/scripts/*; do
+      if [[ -f "$script" ]]; then
+        cp "$script" "$HOME/.local/bin/scripts/"
+        chmod +x "$script"
+        echo "Installed script: $(basename "$script")"
+      fi
+    done
+  fi
+  
+  echo "Creating dotfiles bin symlinks..."
+  mkdir -p "$HOME/.local/bin"
+  ln -sf "$DOTFILES_PATH/bin/dotfiles-update" "$HOME/.local/bin/dotfiles-update"
+  ln -sf "$DOTFILES_PATH/bin/dotfiles-version" "$HOME/.local/bin/dotfiles-version"
+  ln -sf "$DOTFILES_PATH/bin/dotfiles-refresh-config" "$HOME/.local/bin/dotfiles-refresh-config"
+  
+  echo "Configurations installed!"
 }

@@ -1,0 +1,34 @@
+#!/bin/bash
+# dotfiles-refresh-config - Refresh specific config from dotfiles to ~/.config/
+# Usage: dotfiles-refresh-config <path>
+# Example: dotfiles-refresh-config hypr/hyprland.conf
+
+set -euo pipefail
+
+DOTFILES_PATH="${DOTFILES_PATH:-$HOME/.local/share/dotfilesv2}"
+
+if [[ $# -eq 0 ]]; then
+  echo "Usage: dotfiles-refresh-config <path>"
+  echo "Example: dotfiles-refresh-config hypr/hyprland.conf"
+  exit 1
+fi
+
+config_path="$1"
+src_file="$DOTFILES_PATH/config/$config_path"
+dest_file="$HOME/.config/$config_path"
+
+if [[ ! -f "$src_file" ]]; then
+  echo "Config file not found: $src_file"
+  exit 1
+fi
+
+mkdir -p "$(dirname "$dest_file")"
+
+if [[ -f "$dest_file" ]]; then
+  backup="${dest_file}.backup.$(date +%s)"
+  cp "$dest_file" "$backup"
+  echo "Backed up $dest_file -> $backup"
+fi
+
+cp "$src_file" "$dest_file"
+echo "Refreshed config: $dest_file"

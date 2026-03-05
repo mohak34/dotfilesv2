@@ -1,0 +1,161 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "opencode",
+  "autoshare": false,
+  "autoupdate": true,
+  "plugin": [
+    "@franlol/opencode-md-table-formatter@0.0.3",
+    "@mohak34/opencode-notifier@beta"
+  ],
+  "default_agent": "plan",
+  "provider": {
+    "lmstudio": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LM Studio (local)",
+      "options": {
+        "baseURL": "http://127.0.0.1:1234/v1"
+      },
+      "models": {}
+    },
+    "antigravity": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Antigravity (via Proxy)",
+      "options": {
+        "baseURL": "http://127.0.0.1:8000/v1",
+        "apiKey": "proxy@antigravity"
+      },
+      "models": {
+        "antigravity/claude-opus-4-6": {
+          "name": "Claude Opus 4.6",
+          "limit": {
+            "context": 200000,
+            "output": 32000
+          },
+          "reasoning": true,
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "antigravity/claude-sonnet-4-5": {
+          "name": "Claude Sonnet 4.5",
+          "reasoning": true,
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "ant_gemini-3-pro-high": {
+          "id": "antigravity/gemini-3-pro-preview",
+          "name": "Gemini 3 Pro High",
+          "limit": {
+            "context": 1048576,
+            "output": 64000
+          },
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "high"
+          },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "ant_gemini-3-pro-medium": {
+          "id": "antigravity/gemini-3-pro-preview",
+          "name": "Gemini 3 Pro Medium",
+          "limit": {
+            "context": 1048576,
+            "output": 64000
+          },
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "ant_gemini-3-pro-low": {
+          "id": "antigravity/gemini-3-pro-preview",
+          "name": "Gemini 3 Pro Low",
+          "limit": {
+            "context": 1048576,
+            "output": 64000
+          },
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "low"
+          },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "ant_gemini-3-pro": {
+          "id": "antigravity/gemini-3-pro-preview",
+          "name": "Gemini 3 Pro",
+          "limit": {
+            "context": 1048576,
+            "output": 64000
+          },
+          "reasoning": false,
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "ant_gemini-3-flash-high": {
+          "id": "antigravity/gemini-3-flash",
+          "name": "Gemini 3 Flash High",
+          "limit": {
+            "context": 1048576,
+            "output": 64000
+          },
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "high"
+          },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "ant_gemini-3-flash-medium": {
+          "id": "antigravity/gemini-3-flash",
+          "name": "Gemini 3 Flash Medium",
+          "limit": {
+            "context": 1048576,
+            "output": 64000
+          },
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "ant_gemini-3-flash-low": {
+          "id": "antigravity/gemini-3-flash",
+          "name": "Gemini 3 Flash Low",
+          "limit": {
+            "context": 1048576,
+            "output": 64000
+          },
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "low"
+          },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "ant_gemini-3-flash": {
+          "id": "antigravity/gemini-3-flash",
+          "name": "Gemini 3 Flash",
+          "limit": {
+            "context": 1048576,
+            "output": 64000
+          },
+          "reasoning": false,
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "qwen_code/qwen3-coder-plus": {
+          "name": "Qwen3 Coder Plus",
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          },
+          "reasoning": false,
+          "modalities": { "input": ["text"], "output": ["text"] }
+        },
+        "qwen_code/qwen3-coder-flash": {
+          "name": "Qwen3 Coder Flash",
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          },
+          "reasoning": false,
+          "modalities": { "input": ["text"], "output": ["text"] }
+        }
+      }
+    }
+  }
+}

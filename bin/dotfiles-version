@@ -1,0 +1,11 @@
+#!/bin/bash
+# dotfiles-version - Show installed dotfiles version
+
+DOTFILES_PATH="${DOTFILES_PATH:-$HOME/.local/share/dotfilesv2}"
+
+if [[ -f "$DOTFILES_PATH/version" ]]; then
+  cat "$DOTFILES_PATH/version"
+else
+  echo "Version file not found"
+  exit 1
+fi

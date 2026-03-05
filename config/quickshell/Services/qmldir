@@ -1,0 +1,14 @@
+module qs.Services
+singleton AudioService AudioService.qml
+singleton BatteryService BatteryService.qml
+singleton BrightnessService BrightnessService.qml
+singleton NetworkService NetworkService.qml
+singleton BluetoothService BluetoothService.qml
+singleton SystemMetricsService SystemMetricsService.qml
+singleton NotificationService NotificationService.qml
+singleton ShellState ShellState.qml
+singleton NightLightService NightLightService.qml
+singleton WallpaperService WallpaperService.qml
+singleton SettingsService SettingsService.qml
+singleton AppLauncherService AppLauncherService.qml
+singleton ClipboardService ClipboardService.qml

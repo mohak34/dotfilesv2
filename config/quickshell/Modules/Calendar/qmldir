@@ -1,0 +1,3 @@
+module qs.Modules.Calendar
+Calendar Calendar.qml
+BatteryPopup BatteryPopup.qml

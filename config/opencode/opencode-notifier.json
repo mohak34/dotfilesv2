@@ -1,0 +1,24 @@
+{
+  "enabledEvents": ["permission", "question"],
+  "permission": {
+    "sound": false,
+    "notification": true
+  },
+  "complete": {
+    "sound": false,
+    "notification": true
+  },
+  "error": {
+    "sound": false,
+    "notification": true
+  },
+  "question": {
+    "sound": false,
+    "notification": true
+  },
+  "subagent_complete": {
+    "sound": false,
+    "notification": false
+  },
+  "suppressWhenFocused": true
+}
