@@ -78,10 +78,11 @@ copy_hypr_core_only() {
 copy_config_dir "quickshell"
 copy_config_dir "ghostty"
 copy_config_dir "btop"
-copy_config_dir "dotfiles"
 copy_config_dir "wlogout"
 copy_config_dir "environment.d"
 copy_config_dir "opencode"
+copy_config_dir "matugen"
+copy_config_dir "auto-cpufreq"
 
 copy_hypr_core_only
 
@@ -95,12 +96,15 @@ if [[ -f "$DOTFILES_PATH/.zshrc" ]]; then
   echo "Updated .zshrc"
 fi
 
+source "$DOTFILES_PATH/install/config/shell.sh"
+setup_shell_paths
+
 echo "Copying scripts to ~/.local/bin/scripts..."
 mkdir -p "$HOME/.local/bin/scripts"
 for script in "$DOTFILES_PATH"/bin/scripts/*; do
   [[ -f "$script" ]] || continue
   cp "$script" "$HOME/.local/bin/scripts/"
-  chmod +x "$script"
+  chmod +x "$HOME/.local/bin/scripts/$(basename "$script")"
 done
 
 echo "Dotfiles updated successfully!"

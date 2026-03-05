@@ -76,37 +76,5 @@ install_dev_tools() {
   install_node_nvm
   install_bun
   
-  echo "Adding paths to shell config..."
-  
-  local shell_rc="$HOME/.zshrc"
-  
-  if [[ -f "$shell_rc" ]]; then
-    if ! grep -q "BUN_INSTALL" "$shell_rc"; then
-      echo '' >> "$shell_rc"
-      echo '# Bun' >> "$shell_rc"
-      echo 'export BUN_INSTALL="$HOME/.bun"' >> "$shell_rc"
-      echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> "$shell_rc"
-    fi
-    
-    if ! grep -q "NVM_DIR" "$shell_rc"; then
-      echo '' >> "$shell_rc"
-      echo '# NVM' >> "$shell_rc"
-      echo 'export NVM_DIR="$HOME/.nvm"' >> "$shell_rc"
-      echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> "$shell_rc"
-    fi
-    
-    if ! grep -q ".cargo/env" "$shell_rc"; then
-      echo '' >> "$shell_rc"
-      echo '# Rust' >> "$shell_rc"
-      echo '[ -f "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"' >> "$shell_rc"
-    fi
-    
-    if ! grep -q "\.local/bin" "$shell_rc"; then
-      echo '' >> "$shell_rc"
-      echo '# Local bin' >> "$shell_rc"
-      echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$shell_rc"
-    fi
-  fi
-  
   echo "Development tools installed!"
 }

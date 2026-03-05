@@ -26,7 +26,6 @@ pipewire-jack
 pavucontrol
 pamixer
 libpulse
-pulseaudio-alsa
 vlc
 mpv
 wireplumber
@@ -43,7 +42,6 @@ btop
 fastfetch
 brightnessctl
 polkit-kde-agent
-amd-ucode
 dkms
 sof-firmware
 zram-generator
@@ -67,6 +65,8 @@ yt-dlp
 alsa-utils
 sassc
 pacman-contrib
+playerctl
+jq
 
 # Fonts
 ttf-jetbrains-mono-nerd
@@ -123,6 +123,7 @@ obsidian
 qbittorrent
 openvpn
 webkit2gtk
+libreoffice-fresh
 
 # Gaming
 wine

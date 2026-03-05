@@ -6,6 +6,17 @@ detect_hardware() {
   export INSTALL_NVIDIA=false
   export INSTALL_ASUS=false
   export INSTALL_LAPTOP=false
+  export CPU_UCODE=""
+  
+  if grep -qi "amd" /proc/cpuinfo; then
+    echo "Found: AMD CPU"
+    export CPU_UCODE="amd-ucode"
+  elif grep -qi "intel" /proc/cpuinfo; then
+    echo "Found: Intel CPU"
+    export CPU_UCODE="intel-ucode"
+  else
+    echo "CPU vendor unknown, skipping ucode"
+  fi
   
   if hw_nvidia; then
     echo "Found: NVIDIA GPU"
@@ -34,6 +45,7 @@ detect_hardware() {
   
   echo ""
   echo "Hardware Summary:"
+  echo "  CPU ucode: ${CPU_UCODE:-none}"
   echo "  NVIDIA drivers: $INSTALL_NVIDIA"
   echo "  ASUS tools: $INSTALL_ASUS"
   echo "  Laptop packages: $INSTALL_LAPTOP"

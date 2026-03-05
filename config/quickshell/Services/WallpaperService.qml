@@ -209,9 +209,37 @@ Singleton {
 
     Process {
         id: matugenWriteProcess
+
+        onRunningChanged: {
+            if (!running) {
+                hyprctlReloadProcess.running = true
+            }
+        }
     }
 
     Process {
         id: writePresetProcess
+
+        onRunningChanged: {
+            if (!running) {
+                matugenPresetTemplateProcess.command = ["matugen", "json", root._colorsPath]
+                matugenPresetTemplateProcess.running = true
+            }
+        }
+    }
+
+    Process {
+        id: matugenPresetTemplateProcess
+
+        onRunningChanged: {
+            if (!running) {
+                hyprctlReloadProcess.running = true
+            }
+        }
+    }
+
+    Process {
+        id: hyprctlReloadProcess
+        command: ["hyprctl", "reload"]
     }
 }

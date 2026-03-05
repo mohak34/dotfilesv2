@@ -3,7 +3,7 @@ auto-cpufreq
 bibata-cursor-theme
 grimblast-git
 hydra-launcher-bin
-lmstudio
+lmstudio-bin
 localsend
 matugen
 nwg-look

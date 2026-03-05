@@ -31,7 +31,7 @@ install_nvidia_packages() {
 install_asus_packages() {
   if ! command -v yay >/dev/null 2>&1; then
     echo "yay not installed, skipping ASUS packages"
-    return 1
+    return 0
   fi
   
   local package_file="$DOTFILES_PATH/packages/asus.txt"

@@ -31,6 +31,12 @@ update_system() {
 
 install_base_packages() {
   update_system
+  
+  if [[ -n "${CPU_UCODE:-}" ]]; then
+    echo "Installing CPU microcode: $CPU_UCODE"
+    sudo pacman -S --noconfirm --needed "$CPU_UCODE"
+  fi
+  
   install_pacman_packages "$DOTFILES_PATH/packages/base.txt"
 }
 

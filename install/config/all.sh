@@ -5,15 +5,19 @@ source "$DOTFILES_INSTALL/helpers/all.sh"
 
 run_config() {
   log_info "Installing configurations..."
-  
+
+  source "$DOTFILES_INSTALL/config/shell.sh"
+  install_oh_my_zsh
+  install_tpm
+  set_default_shell
+
   source "$DOTFILES_INSTALL/config/dotfiles.sh"
   install_configs
-  
-  source "$DOTFILES_INSTALL/config/shell.sh"
-  install_shell
-  
+
   source "$DOTFILES_INSTALL/config/services.sh"
   install_services
-  
+
+  setup_shell_paths
+
   log_success "Configuration complete!"
 }

@@ -5,18 +5,6 @@ hw_nvidia() {
   lspci | grep -iq nvidia
 }
 
-hw_asus() {
-  local product
-  product=$(cat /sys/class/dmi/id/product_name 2>/dev/null || echo "")
-  local vendor
-  vendor=$(cat /sys/class/dmi/id/sys_vendor 2>/dev/null || echo "")
-  
-  [[ "$product" == *"ROG"* ]] || \
-  [[ "$product" == *"ASUS"* ]] || \
-  [[ "$vendor" == *"ASUS"* ]] || \
-  [[ -d /sys/class/dmi/id/board_name ]] && grep -qi "asus" /sys/class/dmi/id/board_name 2>/dev/null
-}
-
 hw_laptop() {
   [[ -d /sys/class/power_supply/BAT0 ]] || \
   [[ -d /sys/class/power_supply/BAT1 ]]

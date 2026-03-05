@@ -3,6 +3,11 @@
 set -euo pipefail
 
 # Install prerequisites first
+if ! command -v git >/dev/null 2>&1; then
+  echo "Installing git..."
+  sudo pacman -S --noconfirm git
+fi
+
 if ! command -v gum >/dev/null 2>&1; then
   echo "Installing gum..."
   sudo pacman -S --noconfirm gum
@@ -18,14 +23,10 @@ export DOTFILES_INSTALL="$DOTFILES_PATH/install"
 export PATH="$DOTFILES_PATH/bin:$PATH"
 
 if [[ -d "$DOTFILES_PATH" ]]; then
-  echo "Dotfiles v2 already installed. Updating..."
-  (
-    cd "$DOTFILES_PATH"
-    git pull --rebase
-  )
+  echo "Dotfiles v2 already installed. Running update..."
+  "$DOTFILES_PATH/bin/dotfiles-update"
 else
   echo "Installing Dotfiles v2..."
   git clone https://github.com/mohak34/dotfilesv2.git "$DOTFILES_PATH"
+  source "$DOTFILES_PATH/install.sh"
 fi
-
-source "$DOTFILES_PATH/install.sh"

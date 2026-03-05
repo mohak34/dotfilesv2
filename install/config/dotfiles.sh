@@ -25,7 +25,7 @@ copy_config_dir() {
 		return 1
 	fi
 
-	mkdir -p "$(dirname "$dest_dir")"
+	mkdir -p "$dest_dir"
 
 	if [[ -d "$dest_dir" ]]; then
 		backup_config "$src_dir" "$dest_dir"
@@ -62,10 +62,11 @@ install_configs() {
     "quickshell"
     "ghostty"
     "btop"
-    "dotfiles"
     "wlogout"
     "environment.d"
     "opencode"
+    "matugen"
+    "auto-cpufreq"
   )
   
   for dir in "${config_dirs[@]}"; do
@@ -73,6 +74,18 @@ install_configs() {
       copy_config_dir "$dir"
     fi
   done
+
+  if [[ "${INSTALL_NVIDIA:-false}" == "true" ]]; then
+    echo "Appending NVIDIA environment variables to hyprland nvidia.conf..."
+    cat >> "$HOME/.config/hypr/nvidia.conf" <<'EOF'
+
+env = AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1
+env = LIBVA_DRIVER_NAME,nvidia
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+env = NVD_BACKEND,direct
+env = WLR_NO_HARDWARE_CURSORS,1
+EOF
+  fi
   
   if [[ -f "$DOTFILES_PATH/.tmux.conf" ]]; then
     local dest_tmux="$HOME/.tmux.conf"
@@ -98,7 +111,7 @@ install_configs() {
     for script in "$DOTFILES_PATH"/bin/scripts/*; do
       if [[ -f "$script" ]]; then
         cp "$script" "$HOME/.local/bin/scripts/"
-        chmod +x "$script"
+        chmod +x "$HOME/.local/bin/scripts/$(basename "$script")"
         echo "Installed script: $(basename "$script")"
       fi
     done
@@ -110,5 +123,9 @@ install_configs() {
   ln -sf "$DOTFILES_PATH/bin/dotfiles-version" "$HOME/.local/bin/dotfiles-version"
   ln -sf "$DOTFILES_PATH/bin/dotfiles-refresh-config" "$HOME/.local/bin/dotfiles-refresh-config"
   
+  echo "Installing wallpapers..."
+  mkdir -p "$HOME/Pictures/Wallpapers"
+  rsync -av "$DOTFILES_PATH/wallpapers/" "$HOME/Pictures/Wallpapers/"
+
   echo "Configurations installed!"
 }

@@ -92,13 +92,13 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(fzf --zsh)"
 
-. "$HOME/.local/bin/env"
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
 
 
 
 # bun completions
-[ -s "/home/strix/.bun/_bun" ] && source "/home/strix/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -109,12 +109,12 @@ export PATH="$PATH:$GEM_HOME/bin"
 
 ## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall
-[[ -f /home/strix/.dart-cli-completion/zsh-config.zsh ]] && . /home/strix/.dart-cli-completion/zsh-config.zsh || true
+[[ -f "$HOME/.dart-cli-completion/zsh-config.zsh" ]] && . "$HOME/.dart-cli-completion/zsh-config.zsh" || true
 ## [/Completion]
 
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/strix/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -124,7 +124,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 eval "$(zoxide init --cmd cd zsh)"
 
 # opencode
-export PATH=/home/strix/.opencode/bin:$PATH
+export PATH=$HOME/.opencode/bin:$PATH
 
 # Rust
 [ -f "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"

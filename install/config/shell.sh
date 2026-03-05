@@ -59,6 +59,26 @@ setup_shell_paths() {
       echo 'export DOTFILES_PATH="$HOME/.local/share/dotfilesv2"' >> "$shell_rc"
       echo 'export PATH="$DOTFILES_PATH/bin:$PATH"' >> "$shell_rc"
     fi
+    
+    if ! grep -q "BUN_INSTALL" "$shell_rc"; then
+      echo '' >> "$shell_rc"
+      echo '# Bun' >> "$shell_rc"
+      echo 'export BUN_INSTALL="$HOME/.bun"' >> "$shell_rc"
+      echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> "$shell_rc"
+    fi
+    
+    if ! grep -q "NVM_DIR" "$shell_rc"; then
+      echo '' >> "$shell_rc"
+      echo '# NVM' >> "$shell_rc"
+      echo 'export NVM_DIR="$HOME/.nvm"' >> "$shell_rc"
+      echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> "$shell_rc"
+    fi
+    
+    if ! grep -q ".cargo/env" "$shell_rc"; then
+      echo '' >> "$shell_rc"
+      echo '# Rust' >> "$shell_rc"
+      echo '[ -f "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"' >> "$shell_rc"
+    fi
   fi
   
   echo "Shell paths configured!"

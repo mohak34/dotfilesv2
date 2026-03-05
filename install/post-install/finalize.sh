@@ -2,6 +2,15 @@
 # post-install finalize script
 # Shows completion message and next steps
 
+echo "Generating initial color scheme..."
+DEFAULT_WALLPAPER="$HOME/Pictures/Wallpapers/defaultwallpaper.jpg"
+if command -v matugen >/dev/null 2>&1 && [[ -f "$DEFAULT_WALLPAPER" ]]; then
+  matugen image -t scheme-tonal-spot "$DEFAULT_WALLPAPER"
+  echo "Color scheme generated."
+else
+  echo "matugen not found or wallpaper missing, skipping color generation."
+fi
+
 echo ""
 echo "============================================"
 echo "       Dotfiles Installation Complete!     "
