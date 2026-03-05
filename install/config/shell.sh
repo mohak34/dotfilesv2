@@ -42,7 +42,7 @@ set_default_shell() {
   fi
   
   echo "Setting zsh as default shell..."
-  chsh -s "$zsh_path"
+  sudo usermod -s "$zsh_path" "$USER"
   
   echo "Default shell set to zsh. Log out and back in to apply."
 }
