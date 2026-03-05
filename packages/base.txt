@@ -4,29 +4,50 @@ curl
 wget
 rsync
 base-devel
+base
 zsh
 tmux
 gum
 
 # Network
 networkmanager
+networkmanager-strongswan
 iwd
 bluez
 bluez-utils
 blueman
+wireless_tools
 
-# Media
+# Media - Audio/Video
 pipewire
 pipewire-pulse
 pipewire-alsa
+pipewire-jack
 pavucontrol
 pamixer
+libpulse
+pulseaudio-alsa
+vlc
+mpv
+wireplumber
+
+# GStreamer plugins
+gst-plugin-pipewire
+gst-plugins-good
+gst-plugins-bad
+gst-plugins-ugly
+libtheora
 
 # System
 btop
 fastfetch
 brightnessctl
 polkit-kde-agent
+amd-ucode
+dkms
+sof-firmware
+zram-generator
+smartmontools
 
 # Utils
 eza
@@ -38,14 +59,77 @@ vim
 unzip
 zip
 unrar
+htop
+bc
+strace
+yt-dlp
+7zip
+alsa-utils
+sassc
+pacman-contrib
 
 # Fonts
 ttf-jetbrains-mono-nerd
+ttf-jetbrains-mono
 ttf-font-awesome
 noto-fonts-emoji
+noto-fonts
+woff2-font-awesome
 papirus-icon-theme
 
-# XDG
+# XDG & Desktop
 xdg-utils
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
+
+# X11/Xorg
+xorg-server
+xorg-xinit
+xorg-xhost
+
+# Qt5/Qt6 Wayland
+qt5-wayland
+qt6-wayland
+qt5ct
+qt6ct
+qt5-quickcontrols2
+qt6-svg
+qt6-virtualkeyboard
+qt6-multimedia-ffmpeg
+
+# File managers & tools
+thunar
+xarchiver
+dolphin
+kwalletmanager
+ntfs-3g
+mtpfs
+android-file-transfer
+gvfs-mtp
+
+# Display Manager (TUI)
+ly
+
+# Terminal
+ghostty
+nano
+
+# Development tools
+bat
+lazydocker
+
+# Applications
+obsidian
+qbittorrent
+openvpn
+webkit2gtk
+
+# Gaming
+wine
+winetricks
+lutris
+
+# System tools
+efibootmgr
+uwsm
+piper
