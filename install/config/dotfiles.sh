@@ -77,9 +77,33 @@ install_configs() {
 
   if [[ "${INSTALL_NVIDIA:-false}" == "true" ]]; then
     echo "Appending NVIDIA environment variables to hyprland nvidia.conf..."
-    cat >> "$HOME/.config/hypr/nvidia.conf" <<'EOF'
 
-env = AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1
+    local nvidia_card="" igpu_card=""
+    for card in /sys/class/drm/card[0-9]/device/vendor; do
+      [[ -f "$card" ]] || continue
+      local vendor
+      vendor=$(cat "$card")
+      local card_node
+      card_node=$(echo "$card" | grep -o 'card[0-9]')
+      if [[ "$vendor" == "0x10de" ]]; then
+        nvidia_card="/dev/dri/${card_node}"
+      else
+        igpu_card="/dev/dri/${card_node}"
+      fi
+    done
+
+    local aq_drm_devices
+    if [[ -n "$nvidia_card" && -n "$igpu_card" ]]; then
+      aq_drm_devices="${igpu_card}:${nvidia_card}"
+    elif [[ -n "$nvidia_card" ]]; then
+      aq_drm_devices="$nvidia_card"
+    else
+      aq_drm_devices="/dev/dri/card0:/dev/dri/card1"
+    fi
+
+    cat >> "$HOME/.config/hypr/nvidia.conf" <<EOF
+
+env = AQ_DRM_DEVICES,${aq_drm_devices}
 env = LIBVA_DRIVER_NAME,nvidia
 env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 env = NVD_BACKEND,direct

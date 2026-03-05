@@ -48,5 +48,6 @@ install_aur_packages() {
   fi
   
   echo "Installing ${#packages[@]} AUR packages..."
-  yay -S --noconfirm --needed "${packages[@]}"
+  yay -S --noconfirm --needed "${packages[@]}" || \
+    echo "WARNING: Some AUR packages failed to install. Check output above."
 }

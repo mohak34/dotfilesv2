@@ -1,6 +1,6 @@
 # AUR packages
 auto-cpufreq
-bibata-cursor-theme
+bibata-cursor-theme-bin
 grimblast-git
 hydra-launcher-bin
 lmstudio-bin
@@ -8,7 +8,6 @@ localsend
 matugen
 nwg-look
 spotify-launcher
-ttf-ms-win11-auto
 vesktop-bin
 zen-browser-bin
 visual-studio-code-bin
