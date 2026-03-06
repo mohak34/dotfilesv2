@@ -30,21 +30,30 @@ install_tpm() {
 set_default_shell() {
   local zsh_path
   zsh_path=$(command -v zsh)
-  
+
   if [[ -z "$zsh_path" ]]; then
     echo "zsh not found"
     return 1
   fi
-  
+
   if [[ "$SHELL" == *"$zsh_path"* ]]; then
     echo "zsh already default shell"
     return 0
   fi
-  
+
   echo "Setting zsh as default shell..."
-  sudo usermod -s "$zsh_path" "$USER"
-  
+  chsh -s "$zsh_path"
+
   echo "Default shell set to zsh. Log out and back in to apply."
+}
+
+install_shell() {
+  echo "Setting up shell..."
+
+  install_oh_my_zsh
+  install_tpm
+
+  echo "Shell setup complete!"
 }
 
 setup_shell_paths() {

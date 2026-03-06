@@ -27,13 +27,7 @@ install_services() {
   enable_service "NetworkManager"
   start_service "NetworkManager"
 
-  enable_service "ly"
   enable_service "bluetooth"
-
-  if systemctl list-unit-files 2>/dev/null | grep -q "^sddm"; then
-    echo "Disabling sddm (replaced by ly)..."
-    sudo systemctl disable sddm
-  fi
 
   if [[ "${INSTALL_LAPTOP:-false}" == "true" ]]; then
     enable_service "auto-cpufreq"

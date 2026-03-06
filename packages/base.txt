@@ -107,9 +107,6 @@ mtpfs
 android-file-transfer
 gvfs-mtp
 
-# Display Manager (TUI)
-ly
-
 # Terminal
 ghostty
 nano

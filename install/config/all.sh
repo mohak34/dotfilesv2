@@ -9,7 +9,6 @@ run_config() {
   source "$DOTFILES_INSTALL/config/shell.sh"
   install_oh_my_zsh
   install_tpm
-  set_default_shell
 
   source "$DOTFILES_INSTALL/config/dotfiles.sh"
   install_configs
