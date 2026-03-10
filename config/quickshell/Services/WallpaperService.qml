@@ -94,15 +94,22 @@ Singleton {
     Component.onCompleted: queryCurrentWallpaper()
 
     onUseMatugenChanged: {
-        if (wallpaperThemingEnabled && useMatugen && currentWallpaper !== "") {
-            _runMatugenJson(currentWallpaper)
-        }
+        if (useMatugen)
+            currentPreset = ""
+        _applyWallpaperThemeIfReady()
+    }
+
+    onWallpaperThemingEnabledChanged: {
+        _applyWallpaperThemeIfReady()
+    }
+
+    onCurrentWallpaperChanged: {
+        if (!_swwwRunning)
+            _applyWallpaperThemeIfReady()
     }
 
     onColorSchemeChanged: {
-        if (wallpaperThemingEnabled && useMatugen && currentWallpaper !== "") {
-            _runMatugenJson(currentWallpaper)
-        }
+        _applyWallpaperThemeIfReady()
     }
 
     function queryCurrentWallpaper() {
@@ -112,11 +119,19 @@ Singleton {
     function setWallpaper(path) {
         if (_swwwRunning) return
         _swwwRunning = true
+        currentPreset = ""
         currentWallpaper = path
         swwwImgProcess.command = ["swww", "img", path,
             "--transition-type", "fade",
             "--transition-duration", "1"]
         swwwImgProcess.running = true
+    }
+
+    function _applyWallpaperThemeIfReady() {
+        if (!wallpaperThemingEnabled) return
+        if (!useMatugen) return
+        if (currentWallpaper === "") return
+        _runMatugenJson(currentWallpaper)
     }
 
     function _runMatugenJson(path) {
@@ -181,9 +196,7 @@ Singleton {
         onRunningChanged: {
             if (!running) {
                 root._swwwRunning = false
-                if (root.wallpaperThemingEnabled && root.useMatugen && root.currentWallpaper !== "") {
-                    root._runMatugenJson(root.currentWallpaper)
-                }
+                root._applyWallpaperThemeIfReady()
             }
         }
     }
@@ -209,6 +222,17 @@ Singleton {
 
     Process {
         id: matugenWriteProcess
+
+        onRunningChanged: {
+            if (!running) {
+                matugenTemplateProcess.command = ["matugen", "json", root._colorsPath]
+                matugenTemplateProcess.running = true
+            }
+        }
+    }
+
+    Process {
+        id: matugenTemplateProcess
 
         onRunningChanged: {
             if (!running) {

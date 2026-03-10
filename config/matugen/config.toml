@@ -2,6 +2,6 @@
 reload_apps = false
 set_wallpaper = false
 
-[[templates]]
+[templates.hyprland]
 input_path = "~/.config/matugen/templates/hyprland-colors.conf"
 output_path = "~/.config/hypr/colors.conf"

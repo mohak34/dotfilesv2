@@ -42,7 +42,7 @@ copy_config_dir() {
   
   [[ -d "$src_dir" ]] || return
   
-  mkdir -p "$(dirname "$dest_dir")"
+  mkdir -p "$dest_dir"
   
   if [[ -d "$dest_dir" ]]; then
     rsync -av --delete "$src_dir/" "$dest_dir/"
@@ -71,6 +71,16 @@ copy_hypr_core_only() {
   cp "$src_dir/hyprland.conf" "$dest_dir/"
   cp "$src_dir/hypridle.conf" "$dest_dir/"
   cp "$src_dir/hyprlock.conf" "$dest_dir/"
+  cp "$src_dir/colors.conf" "$dest_dir/"
+  cp "$src_dir/nvidia.conf" "$dest_dir/"
+
+  if [[ -f "$src_dir/asus.conf" && -f "$dest_dir/asus.conf" ]]; then
+    rm -f "$dest_dir/asus.conf"
+  fi
+
+  if [[ -f "$src_dir/asus.conf" && -f "$HOME/.config/.dotfiles-install-asus" ]]; then
+    cp "$src_dir/asus.conf" "$dest_dir/"
+  fi
   
   echo "Updated hypr config (core files)"
 }
@@ -98,6 +108,10 @@ fi
 
 source "$DOTFILES_PATH/install/config/shell.sh"
 setup_shell_paths
+
+if [[ -f "$HOME/.config/.dotfiles-install-asus" ]]; then
+  echo "ASUS config remains enabled"
+fi
 
 echo "Copying scripts to ~/.local/bin/scripts..."
 mkdir -p "$HOME/.local/bin/scripts"

@@ -8,7 +8,7 @@ install_oh_my_zsh() {
   fi
   
   echo "Installing Oh My Zsh..."
-  sh -c "$(curl -fsSL https://install.ohmyz.sh/)" -- --unattended
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://install.ohmyz.sh/)" -- --unattended
   
   echo "Oh My Zsh installed!"
 }
@@ -22,29 +22,10 @@ install_tpm() {
   fi
   
   echo "Installing Tmux Plugin Manager..."
+  mkdir -p "$(dirname "$tpm_dir")"
   git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
   
   echo "TPM installed!"
-}
-
-set_default_shell() {
-  local zsh_path
-  zsh_path=$(command -v zsh)
-
-  if [[ -z "$zsh_path" ]]; then
-    echo "zsh not found"
-    return 1
-  fi
-
-  if [[ "$SHELL" == *"$zsh_path"* ]]; then
-    echo "zsh already default shell"
-    return 0
-  fi
-
-  echo "Setting zsh as default shell..."
-  chsh -s "$zsh_path"
-
-  echo "Default shell set to zsh. Log out and back in to apply."
 }
 
 install_shell() {
@@ -91,15 +72,4 @@ setup_shell_paths() {
   fi
   
   echo "Shell paths configured!"
-}
-
-install_shell() {
-  echo "Setting up shell..."
-  
-  install_oh_my_zsh
-  install_tpm
-  set_default_shell
-  setup_shell_paths
-  
-  echo "Shell setup complete!"
 }

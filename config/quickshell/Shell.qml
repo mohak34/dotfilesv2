@@ -7,6 +7,7 @@ import qs.Modules.ControlCenter
 import qs.Modules.Calendar
 import qs.Modules.Launcher
 import qs.Modules.Clipboard
+import qs.Modules.Keybinds
 import qs.Services
 
 Item {
@@ -34,6 +35,26 @@ Item {
     BatteryPopup {}
     Launcher {}
     ClipboardPopup {}
+    KeybindsPopup {}
+
+    IpcHandler {
+        target: "keybinds"
+
+        function toggle(): string {
+            ShellState.toggleKeybinds()
+            return ShellState.keybindsOpen ? "opened" : "closed"
+        }
+
+        function open(): string {
+            ShellState.openKeybinds()
+            return "opened"
+        }
+
+        function close(): string {
+            ShellState.closeKeybinds()
+            return "closed"
+        }
+    }
 
     IpcHandler {
         target: "notification-center"

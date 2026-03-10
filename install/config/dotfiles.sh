@@ -2,56 +2,56 @@
 set -euo pipefail
 
 backup_config() {
-	local src="$1"
-	local dest="$2"
-	local backup
-	backup="${dest}.backup.$(date +%s)"
+  local src="$1"
+  local dest="$2"
+  local backup
+  backup="${dest}.backup.$(date +%s)"
 
-	if [[ -f "$dest" ]]; then
-		cp "$dest" "$backup"
-		echo "Backed up file $dest -> $backup"
-	elif [[ -d "$dest" ]]; then
-		cp -r "$dest" "$backup"
-		echo "Backed up directory $dest -> $backup"
-	fi
+  if [[ -f "$dest" ]]; then
+    cp "$dest" "$backup"
+    echo "Backed up file $dest -> $backup"
+  elif [[ -d "$dest" ]]; then
+    cp -r "$dest" "$backup"
+    echo "Backed up directory $dest -> $backup"
+  fi
 }
 
 copy_config_dir() {
-	local src_dir="$DOTFILES_PATH/config/$1"
-	local dest_dir="$HOME/.config/$1"
+  local src_dir="$DOTFILES_PATH/config/$1"
+  local dest_dir="$HOME/.config/$1"
 
-	if [[ ! -d "$src_dir" ]]; then
-		echo "Source config dir not found: $src_dir"
-		return 1
-	fi
+  if [[ ! -d "$src_dir" ]]; then
+    echo "Source config dir not found: $src_dir"
+    return 1
+  fi
 
-	mkdir -p "$dest_dir"
+  mkdir -p "$dest_dir"
 
-	if [[ -d "$dest_dir" ]]; then
-		backup_config "$src_dir" "$dest_dir"
-	fi
+  if [[ -d "$dest_dir" ]]; then
+    backup_config "$src_dir" "$dest_dir"
+  fi
 
-	rsync -av "$src_dir/" "$dest_dir/"
-	echo "Copied $src_dir -> $dest_dir"
+  rsync -av "$src_dir/" "$dest_dir/"
+  echo "Copied $src_dir -> $dest_dir"
 }
 
 copy_config_file() {
-	local src_file="$DOTFILES_PATH/config/$1"
-	local dest_file="$HOME/.config/$1"
+  local src_file="$DOTFILES_PATH/config/$1"
+  local dest_file="$HOME/.config/$1"
 
-	if [[ ! -f "$src_file" ]]; then
-		echo "Source config file not found: $src_file"
-		return 1
-	fi
+  if [[ ! -f "$src_file" ]]; then
+    echo "Source config file not found: $src_file"
+    return 1
+  fi
 
-	mkdir -p "$(dirname "$dest_file")"
+  mkdir -p "$(dirname "$dest_file")"
 
-	if [[ -f "$dest_file" ]]; then
-		backup_config "$src_file" "$dest_file"
-	fi
+  if [[ -f "$dest_file" ]]; then
+    backup_config "$src_file" "$dest_file"
+  fi
 
-	cp "$src_file" "$dest_file"
-	echo "Copied $src_file -> $dest_file"
+  cp "$src_file" "$dest_file"
+  echo "Copied $src_file -> $dest_file"
 }
 
 install_configs() {
@@ -74,6 +74,15 @@ install_configs() {
       copy_config_dir "$dir"
     fi
   done
+
+  if [[ "${INSTALL_ASUS:-false}" == "true" ]]; then
+    touch "$HOME/.config/.dotfiles-install-asus"
+    cp "$DOTFILES_PATH/config/hypr/asus.conf" "$HOME/.config/hypr/asus.conf"
+    echo "Installed ASUS-specific hypr config"
+  else
+    rm -f "$HOME/.config/.dotfiles-install-asus"
+    rm -f "$HOME/.config/hypr/asus.conf"
+  fi
 
   if [[ "${INSTALL_NVIDIA:-false}" == "true" ]]; then
     echo "Appending NVIDIA environment variables to hyprland nvidia.conf..."

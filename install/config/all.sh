@@ -7,8 +7,7 @@ run_config() {
   log_info "Installing configurations..."
 
   source "$DOTFILES_INSTALL/config/shell.sh"
-  install_oh_my_zsh
-  install_tpm
+  install_shell
 
   source "$DOTFILES_INSTALL/config/dotfiles.sh"
   install_configs

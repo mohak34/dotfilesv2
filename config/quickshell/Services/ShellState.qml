@@ -110,4 +110,18 @@ Singleton {
     function closeClipboard() {
         clipboardOpen = false
     }
+
+    property bool keybindsOpen: false
+
+    function toggleKeybinds() {
+        keybindsOpen = !keybindsOpen
+    }
+
+    function openKeybinds() {
+        keybindsOpen = true
+    }
+
+    function closeKeybinds() {
+        keybindsOpen = false
+    }
 }
