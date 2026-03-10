@@ -81,7 +81,7 @@ install_configs() {
     echo "Installed ASUS-specific hypr config"
   else
     rm -f "$HOME/.config/.dotfiles-install-asus"
-    rm -f "$HOME/.config/hypr/asus.conf"
+    : > "$HOME/.config/hypr/asus.conf"
   fi
 
   if [[ "${INSTALL_NVIDIA:-false}" == "true" ]]; then
