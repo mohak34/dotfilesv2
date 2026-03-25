@@ -57,7 +57,7 @@ blindly, always adapt to remove DMS-specific dependencies.
 │   ├── NotificationService.qml        # NotificationServer + OSD + DND + popup management
 │   ├── ShellState.qml                 # CC/NC open state (independent), DND, trigger positions, expandedDetail, activeTab
 │   ├── SystemMetricsService.qml       # /proc polling (CPU%, RAM%)
-│   └── WallpaperService.qml           # swww img + matugen, currentWallpaper, useMatugen flag
+│   └── WallpaperService.qml           # awww img + matugen, currentWallpaper, useMatugen flag
 ├── Modules/
 │   ├── Bar/
 │   │   ├── qmldir
@@ -104,7 +104,7 @@ blindly, always adapt to remove DMS-specific dependencies.
 | 4 Polish | COMPLETE | Floating popups, grid tiles, BT/NightLight/DND toggles |
 | 4.5 Audio | COMPLETE | Mic tile, mic slider, audio output detail, per-app streams |
 | 4.6 Audio Input | COMPLETE | Mic input device picker detail panel |
-| 4.7 Wallpaper | COMPLETE | swww thumbnail grid, Theme Source toggle, matugen integration |
+| 4.7 Wallpaper | COMPLETE | awww thumbnail grid, Theme Source toggle, matugen integration |
 | 4.8 Tabbed Popup | COMPLETE | CC + Notifications + Wallpaper merged into one tabbed popup |
 | 4.9 NC Split + WP Fix | COMPLETE | NC back to standalone right-side panel; CC 2 tabs; fixed wallpaper grid |
 | 5 - Theming Polish | COMPLETE | Theme.qml loadColors fix, preset themes (5 presets), Matugen scheme selector (tonal/mono/neutral/vibrant), Light theme upgrade (state layers, container colors) |
