@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
+set -uo pipefail
 
 # Install prerequisites first
 if ! command -v git >/dev/null 2>&1; then
@@ -22,11 +22,15 @@ export DOTFILES_PATH="$HOME/.local/share/dotfilesv2"
 export DOTFILES_INSTALL="$DOTFILES_PATH/install"
 export PATH="$DOTFILES_PATH/bin:$PATH"
 
-if [[ -d "$DOTFILES_PATH" ]]; then
+if [[ -f "$DOTFILES_PATH/.install-completed" ]]; then
   echo "Dotfiles v2 already installed. Running update..."
   "$DOTFILES_PATH/bin/dotfiles-update"
 else
-  echo "Installing Dotfiles v2..."
-  git clone https://github.com/mohak34/dotfilesv2.git "$DOTFILES_PATH"
+  if [[ -d "$DOTFILES_PATH" ]]; then
+    echo "Previous installation incomplete. Re-running install..."
+  else
+    echo "Installing Dotfiles v2..."
+    git clone https://github.com/mohak34/dotfilesv2.git "$DOTFILES_PATH"
+  fi
   source "$DOTFILES_PATH/install.sh"
 fi
