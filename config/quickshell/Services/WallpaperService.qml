@@ -14,7 +14,7 @@ Singleton {
     property string currentPreset: ""
     property string colorScheme: "tonal-spot"
 
-    property bool _swwwRunning: false
+    property bool _awwwRunning: false
     readonly property string _matugenDir: Quickshell.env("HOME") + "/.config/matugen"
     readonly property string _colorsPath: _matugenDir + "/colors.json"
 
@@ -104,7 +104,7 @@ Singleton {
     }
 
     onCurrentWallpaperChanged: {
-        if (!_swwwRunning)
+        if (!_awwwRunning)
             _applyWallpaperThemeIfReady()
     }
 
@@ -113,18 +113,18 @@ Singleton {
     }
 
     function queryCurrentWallpaper() {
-        swwwQueryProcess.running = true
+        awwwQueryProcess.running = true
     }
 
     function setWallpaper(path) {
-        if (_swwwRunning) return
-        _swwwRunning = true
+        if (_awwwRunning) return
+        _awwwRunning = true
         currentPreset = ""
         currentWallpaper = path
-        swwwImgProcess.command = ["swww", "img", path,
+        awwwImgProcess.command = ["awww", "img", path,
             "--transition-type", "fade",
             "--transition-duration", "1"]
-        swwwImgProcess.running = true
+        awwwImgProcess.running = true
     }
 
     function _applyWallpaperThemeIfReady() {
@@ -169,13 +169,13 @@ Singleton {
     }
 
     Process {
-        id: swwwQueryProcess
-        command: ["swww", "query"]
+        id: awwwQueryProcess
+        command: ["awww", "query"]
 
         stdout: StdioCollector {
-            id: swwwQueryOut
+            id: awwwQueryOut
             onStreamFinished: {
-                var lines = swwwQueryOut.text.split("\n")
+                var lines = awwwQueryOut.text.split("\n")
                 for (var i = 0; i < lines.length; i++) {
                     var line = lines[i].trim()
                     if (line.indexOf(": image: ") !== -1) {
@@ -191,11 +191,11 @@ Singleton {
     }
 
     Process {
-        id: swwwImgProcess
+        id: awwwImgProcess
 
         onRunningChanged: {
             if (!running) {
-                root._swwwRunning = false
+                root._awwwRunning = false
                 root._applyWallpaperThemeIfReady()
             }
         }

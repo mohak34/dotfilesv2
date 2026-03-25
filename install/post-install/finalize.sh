@@ -5,7 +5,7 @@
 echo "Generating initial color scheme..."
 DEFAULT_WALLPAPER="$HOME/Pictures/Wallpapers/defaultwallpaper.jpg"
 if command -v matugen >/dev/null 2>&1 && [[ -f "$DEFAULT_WALLPAPER" ]]; then
-  matugen image -t scheme-tonal-spot "$DEFAULT_WALLPAPER"
+  matugen image -t scheme-tonal-spot "$DEFAULT_WALLPAPER" || echo "Warning: matugen failed, continuing..."
   echo "Color scheme generated."
 else
   echo "matugen not found or wallpaper missing, skipping color generation."

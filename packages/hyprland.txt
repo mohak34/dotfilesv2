@@ -25,7 +25,7 @@ tesseract
 tesseract-data-eng
 
 # Wallpaper
-swww
+awww
 
 # Input methods
 fcitx5
