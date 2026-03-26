@@ -281,6 +281,138 @@ Item {
             }
         }
 
+        Item {
+            id: resizeRow
+            width: parent.width
+            height: 24
+
+            Text {
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                text: "Resize Mode"
+                color: Theme.surfaceVariantText
+                font.family: Appearance.fontFamily
+                font.pixelSize: 11
+                font.weight: Font.Bold
+            }
+
+            Row {
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                spacing: 4
+
+                Repeater {
+                    model: ListModel {
+                        ListElement { value: "crop"; label: "Crop" }
+                        ListElement { value: "fit"; label: "Fit" }
+                        ListElement { value: "stretch"; label: "Stretch" }
+                        ListElement { value: "no"; label: "Original" }
+                    }
+
+                    delegate: Rectangle {
+                        width: resizeLabel.implicitWidth + 10
+                        height: 22
+                        radius: 6
+                        color: WallpaperService.resizeMode === value
+                            ? Theme.primary
+                            : Theme.withAlpha(Theme.surfaceVariant, 0.4)
+
+                        Behavior on color {
+                            enabled: SettingsService.animationsEnabled
+                            ColorAnimation { duration: Appearance.anim.quick }
+                        }
+
+                        Text {
+                            id: resizeLabel
+                            anchors.centerIn: parent
+                            text: label
+                            color: WallpaperService.resizeMode === value ? Theme.primaryText : Theme.surfaceVariantText
+                            font.family: Appearance.fontFamily
+                            font.pixelSize: 10
+                            font.weight: Font.Bold
+
+                            Behavior on color {
+                                enabled: SettingsService.animationsEnabled
+                                ColorAnimation { duration: Appearance.anim.quick }
+                            }
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            cursorShape: Qt.PointingHandCursor
+                            onClicked: WallpaperService.resizeMode = value
+                        }
+                    }
+                }
+            }
+        }
+
+        Item {
+            id: transitionRow
+            width: parent.width
+            height: 24
+
+            Text {
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                text: "Transition"
+                color: Theme.surfaceVariantText
+                font.family: Appearance.fontFamily
+                font.pixelSize: 11
+                font.weight: Font.Bold
+            }
+
+            Row {
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                spacing: 4
+
+                Repeater {
+                    model: ListModel {
+                        ListElement { value: "fade"; label: "Fade" }
+                        ListElement { value: "simple"; label: "Simple" }
+                        ListElement { value: "wipe"; label: "Wipe" }
+                        ListElement { value: "any"; label: "Any" }
+                    }
+
+                    delegate: Rectangle {
+                        width: transitionLabel.implicitWidth + 10
+                        height: 22
+                        radius: 6
+                        color: WallpaperService.transitionType === value
+                            ? Theme.primary
+                            : Theme.withAlpha(Theme.surfaceVariant, 0.4)
+
+                        Behavior on color {
+                            enabled: SettingsService.animationsEnabled
+                            ColorAnimation { duration: Appearance.anim.quick }
+                        }
+
+                        Text {
+                            id: transitionLabel
+                            anchors.centerIn: parent
+                            text: label
+                            color: WallpaperService.transitionType === value ? Theme.primaryText : Theme.surfaceVariantText
+                            font.family: Appearance.fontFamily
+                            font.pixelSize: 10
+                            font.weight: Font.Bold
+
+                            Behavior on color {
+                                enabled: SettingsService.animationsEnabled
+                                ColorAnimation { duration: Appearance.anim.quick }
+                            }
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            cursorShape: Qt.PointingHandCursor
+                            onClicked: WallpaperService.transitionType = value
+                        }
+                    }
+                }
+            }
+        }
+
         Flow {
             id: presetRow
             visible: !WallpaperService.useMatugen && WallpaperService.wallpaperThemingEnabled

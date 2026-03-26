@@ -13,8 +13,11 @@ Singleton {
     property bool wallpaperThemingEnabled: true
     property string currentPreset: ""
     property string colorScheme: "tonal-spot"
+    property string resizeMode: "crop"
+    property string transitionType: "fade"
 
     property bool _awwwRunning: false
+    property bool _pendingWallpaperReapply: false
     readonly property string _matugenDir: Quickshell.env("HOME") + "/.config/matugen"
     readonly property string _colorsPath: _matugenDir + "/colors.json"
 
@@ -112,6 +115,28 @@ Singleton {
         _applyWallpaperThemeIfReady()
     }
 
+    onResizeModeChanged: {
+        if (currentWallpaper === "") return
+
+        if (_awwwRunning) {
+            _pendingWallpaperReapply = true
+            return
+        }
+
+        setWallpaper(currentWallpaper)
+    }
+
+    onTransitionTypeChanged: {
+        if (currentWallpaper === "") return
+
+        if (_awwwRunning) {
+            _pendingWallpaperReapply = true
+            return
+        }
+
+        setWallpaper(currentWallpaper)
+    }
+
     function queryCurrentWallpaper() {
         awwwQueryProcess.running = true
     }
@@ -121,9 +146,17 @@ Singleton {
         _awwwRunning = true
         currentPreset = ""
         currentWallpaper = path
-        awwwImgProcess.command = ["awww", "img", path,
-            "--transition-type", "fade",
-            "--transition-duration", "1"]
+        if (root.resizeMode === "no") {
+            awwwImgProcess.command = ["awww", "img", path,
+                "--transition-type", root.transitionType,
+                "--transition-duration", "1",
+                "--no-resize"]
+        } else {
+            awwwImgProcess.command = ["awww", "img", path,
+                "--transition-type", root.transitionType,
+                "--transition-duration", "1",
+                "--resize", root.resizeMode]
+        }
         awwwImgProcess.running = true
     }
 
@@ -196,6 +229,13 @@ Singleton {
         onRunningChanged: {
             if (!running) {
                 root._awwwRunning = false
+
+                if (root._pendingWallpaperReapply) {
+                    root._pendingWallpaperReapply = false
+                    root.setWallpaper(root.currentWallpaper)
+                    return
+                }
+
                 root._applyWallpaperThemeIfReady()
             }
         }
