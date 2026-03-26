@@ -136,7 +136,7 @@ Singleton {
 
     function _runMatugenJson(path) {
         var schemeArg = root.colorScheme.startsWith("scheme-") ? root.colorScheme : "scheme-" + root.colorScheme
-        matugenJsonProcess.command = ["matugen", "image", "--json", "hex", "-t", schemeArg, path]
+        matugenJsonProcess.command = ["matugen", "image", "--json", "hex", "-t", schemeArg, "--source-color-index", "0", path]
         matugenJsonProcess.running = true
     }
 

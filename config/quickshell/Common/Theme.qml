@@ -58,33 +58,40 @@ Singleton {
         }
     }
 
+    function getColor(obj, fallback) {
+        if (!obj) return fallback
+        if (typeof obj === "string") return obj
+        if (obj.color) return obj.color
+        return fallback
+    }
+
     function loadColors() {
         try {
             var data = JSON.parse(colorsFile.text())
             var c = data.colors
             if (!c) return
 
-            root.background         = c.background?.dark         ?? root.background
-            root.surface            = c.surface?.dark            ?? root.surface
-            root.surfaceVariant     = c.surface_variant?.dark    ?? root.surfaceVariant
-            root.primary            = c.primary?.dark            ?? root.primary
-            root.primaryText        = c.on_primary?.dark         ?? root.primaryText
-            root.surfaceText        = c.on_surface?.dark         ?? root.surfaceText
-            root.surfaceVariantText = c.on_surface_variant?.dark ?? root.surfaceVariantText
-            root.outline            = c.outline?.dark            ?? root.outline
-            root.outlineVariant     = c.outline_variant?.dark   ?? root.outlineVariant
-            root.error              = c.error?.dark              ?? root.error
-            root.warning            = c.tertiary?.dark           ?? root.warning
-            root.info               = c.secondary?.dark          ?? root.info
+            root.background         = getColor(c.background?.dark, root.background)
+            root.surface            = getColor(c.surface?.dark, root.surface)
+            root.surfaceVariant     = getColor(c.surface_variant?.dark, root.surfaceVariant)
+            root.primary            = getColor(c.primary?.dark, root.primary)
+            root.primaryText        = getColor(c.on_primary?.dark, root.primaryText)
+            root.surfaceText        = getColor(c.on_surface?.dark, root.surfaceText)
+            root.surfaceVariantText = getColor(c.on_surface_variant?.dark, root.surfaceVariantText)
+            root.outline            = getColor(c.outline?.dark, root.outline)
+            root.outlineVariant     = getColor(c.outline_variant?.dark, root.outlineVariant)
+            root.error              = getColor(c.error?.dark, root.error)
+            root.warning            = getColor(c.tertiary?.dark, root.warning)
+            root.info               = getColor(c.secondary?.dark, root.info)
 
-            root.primaryContainer    = c.primary_container?.dark   ?? root.primaryContainer
-            root.secondary           = c.secondary?.dark         ?? root.secondary
-            root.secondaryContainer = c.secondary_container?.dark ?? root.secondaryContainer
-            root.tertiary           = c.tertiary?.dark          ?? root.tertiary
-            root.tertiaryContainer  = c.tertiary_container?.dark ?? root.tertiaryContainer
-            root.inverseSurface     = c.inverse_surface?.dark    ?? root.inverseSurface
-            root.inverseOnSurface   = c.inverse_on_surface?.dark ?? root.inverseOnSurface
-            root.inversePrimary     = c.inverse_primary?.dark    ?? root.inversePrimary
+            root.primaryContainer    = getColor(c.primary_container?.dark, root.primaryContainer)
+            root.secondary           = getColor(c.secondary?.dark, root.secondary)
+            root.secondaryContainer = getColor(c.secondary_container?.dark, root.secondaryContainer)
+            root.tertiary           = getColor(c.tertiary?.dark, root.tertiary)
+            root.tertiaryContainer  = getColor(c.tertiary_container?.dark, root.tertiaryContainer)
+            root.inverseSurface     = getColor(c.inverse_surface?.dark, root.inverseSurface)
+            root.inverseOnSurface   = getColor(c.inverse_on_surface?.dark, root.inverseOnSurface)
+            root.inversePrimary     = getColor(c.inverse_primary?.dark, root.inversePrimary)
 
             root.matugenLoaded = true
         } catch (e) {
