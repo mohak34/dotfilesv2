@@ -1,0 +1,34 @@
+@define-color bg_color {{colors.background.dark.hex}};
+@define-color fg_color {{colors.on_surface.dark.hex}};
+@define-color view_bg_color {{colors.surface.dark.hex}};
+@define-color view_fg_color {{colors.on_surface.dark.hex}};
+@define-color window_bg_color {{colors.background.dark.hex}};
+@define-color window_fg_color {{colors.on_surface.dark.hex}};
+@define-color headerbar_bg_color {{colors.background.dark.hex}};
+@define-color headerbar_fg_color {{colors.on_surface.dark.hex}};
+@define-color sidebar_bg_color {{colors.surface.dark.hex}};
+@define-color sidebar_fg_color {{colors.on_surface.dark.hex}};
+@define-color card_bg_color {{colors.surface_variant.dark.hex}};
+@define-color card_fg_color {{colors.on_surface.dark.hex}};
+@define-color accent_color {{colors.primary.dark.hex}};
+@define-color accent_fg_color {{colors.on_primary.dark.hex}};
+@define-color destructive_color {{colors.error.dark.hex}};
+@define-color destructive_fg_color {{colors.on_primary.dark.hex}};
+@define-color success_color {{colors.secondary.dark.hex}};
+@define-color warning_color {{colors.tertiary.dark.hex}};
+@define-color border_color {{colors.outline_variant.dark.hex}};
+
+window,
+navigationview,
+listview,
+columnview {
+  background-color: @window_bg_color;
+  color: @window_fg_color;
+}
+
+headerbar,
+toolbar {
+  background-color: color-mix(in srgb, @window_bg_color 95%, @accent_color 5%);
+  color: @headerbar_fg_color;
+  border-color: @border_color;
+}

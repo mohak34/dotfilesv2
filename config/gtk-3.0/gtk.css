@@ -1,0 +1,192 @@
+@import url("colors.css");
+
+window.thunar {
+  border-radius: 12px;
+}
+
+.thunar .sidebar,
+.thunar .view {
+  padding: 2px;
+}
+
+.thunar treeview.view {
+  -GtkTreeView-grid-line-width: 0;
+}
+
+.thunar treeview.view:selected,
+.thunar .sidebar row:selected {
+  border-radius: 8px;
+}
+
+headerbar {
+  min-height: 34px;
+  padding: 2px 6px;
+}
+
+toolbar,
+menubar {
+  min-height: 32px;
+}
+
+window.thunar,
+window.thunar label,
+window.thunar treeview,
+window.thunar treeview.view,
+window.thunar .sidebar,
+window.thunar .sidebar label,
+window.thunar entry,
+window.thunar button,
+window.thunar headerbar,
+window.thunar .path-bar button,
+window.thunar .location-bar {
+  font-weight: 600;
+}
+
+dialog,
+.dialog,
+.thunar dialog,
+.thunar .dialog-vbox {
+  background-color: @theme_base_color;
+  color: @theme_text_color;
+}
+
+dialog button,
+.dialog-action-box button,
+box.dialog-action-area button,
+.thunar dialog button {
+  background-color: alpha(@theme_base_color, 0.92);
+  color: @theme_text_color;
+  border: 1px solid alpha(@borders, 0.8);
+}
+
+messagedialog button,
+messagedialog button.flat,
+dialog button.flat,
+dialog .linked > button,
+dialog .linked > button.flat,
+dialog action-area button,
+dialog .dialog-action-area button,
+window.thunar dialog button,
+window.thunar dialog button.flat {
+  background-image: none;
+  background-color: alpha(@theme_base_color, 0.94);
+  color: @theme_text_color;
+  border: 1px solid alpha(@borders, 0.85);
+  box-shadow: none;
+}
+
+dialog button:hover,
+.dialog-action-box button:hover,
+box.dialog-action-area button:hover,
+.thunar dialog button:hover {
+  background-color: alpha(@accent_color, 0.2);
+  color: @theme_text_color;
+}
+
+messagedialog button:hover,
+messagedialog button.flat:hover,
+dialog button.flat:hover,
+dialog .linked > button:hover,
+dialog .linked > button.flat:hover,
+dialog action-area button:hover,
+dialog .dialog-action-area button:hover,
+window.thunar dialog button:hover,
+window.thunar dialog button.flat:hover {
+  background-image: none;
+  background-color: alpha(@accent_color, 0.24);
+  color: @theme_text_color;
+}
+
+dialog button.suggested-action,
+.dialog-action-box button.suggested-action,
+box.dialog-action-area button.suggested-action {
+  background-color: alpha(@accent_color, 0.26);
+  color: @theme_text_color;
+}
+
+dialog button.destructive-action,
+.dialog-action-box button.destructive-action,
+box.dialog-action-area button.destructive-action {
+  background-color: alpha(@error_color, 0.28);
+  color: @theme_text_color;
+}
+
+window.thunar actionbar,
+window.thunar .action-bar,
+window.thunar .bottom-toolbar,
+window.thunar .toolbar,
+window.thunar statusbar {
+  background-image: none;
+  background-color: shade(@theme_base_color, 1.12);
+  color: @theme_text_color;
+  border-top: 1px solid alpha(@borders, 0.8);
+}
+
+window.thunar .floating-bar,
+window.thunar .floating-bar box,
+window.thunar .floating-bar label,
+window.thunar .standard-view toolbar,
+window.thunar .standard-view toolbar box,
+window.thunar .thunar-standard-view toolbar,
+window.thunar .thunar-standard-view toolbar box,
+window.thunar toolbar:last-child,
+window.thunar box > toolbar:last-child,
+window.thunar statusbar,
+window.thunar statusbar frame,
+window.thunar statusbar box,
+window.thunar statusbar label {
+  background-image: none;
+  background-color: shade(@theme_base_color, 1.12);
+  color: @theme_text_color;
+  border-color: alpha(@borders, 0.85);
+}
+
+window.thunar actionbar button,
+window.thunar .action-bar button,
+window.thunar .bottom-toolbar button,
+window.thunar statusbar button,
+window.thunar actionbar button.flat,
+window.thunar .action-bar button.flat,
+window.thunar .bottom-toolbar button.flat,
+window.thunar statusbar button.flat {
+  background-image: none;
+  background-color: alpha(@theme_base_color, 0.94);
+  color: @theme_text_color;
+  border: 1px solid alpha(@borders, 0.85);
+}
+
+window.thunar .floating-bar button,
+window.thunar .floating-bar button.flat,
+window.thunar .standard-view toolbar button,
+window.thunar .standard-view toolbar button.flat,
+window.thunar .thunar-standard-view toolbar button,
+window.thunar .thunar-standard-view toolbar button.flat,
+window.thunar toolbar:last-child button,
+window.thunar toolbar:last-child button.flat {
+  background-image: none;
+  background-color: alpha(@theme_base_color, 0.94);
+  color: @theme_text_color;
+  border: 1px solid alpha(@borders, 0.85);
+}
+
+window.thunar actionbar button:hover,
+window.thunar .action-bar button:hover,
+window.thunar .bottom-toolbar button:hover,
+window.thunar statusbar button:hover,
+window.thunar actionbar button.flat:hover,
+window.thunar .action-bar button.flat:hover,
+window.thunar .bottom-toolbar button.flat:hover,
+window.thunar statusbar button.flat:hover {
+  background-image: none;
+  background-color: alpha(@accent_color, 0.24);
+  color: @theme_text_color;
+}
+
+messagedialog,
+messagedialog box,
+messagedialog .dialog-action-area,
+dialog .dialog-action-area,
+dialog action-area {
+  background-color: @theme_base_color;
+  color: @theme_text_color;
+}

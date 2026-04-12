@@ -1,0 +1,20 @@
+@import url("colors.css");
+
+window {
+  border-radius: 12px;
+}
+
+navigationview,
+listview,
+columnview {
+  padding: 2px;
+}
+
+headerbar {
+  min-height: 34px;
+  padding: 2px 6px;
+}
+
+toolbar {
+  min-height: 32px;
+}

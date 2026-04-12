@@ -1,0 +1,197 @@
+@define-color bg_color {{colors.background.dark.hex}};
+@define-color fg_color {{colors.on_surface.dark.hex}};
+@define-color base_color {{colors.surface.dark.hex}};
+@define-color text_color {{colors.on_surface.dark.hex}};
+@define-color selected_bg_color alpha({{colors.primary.dark.hex}}, 0.22);
+@define-color selected_fg_color {{colors.on_surface.dark.hex}};
+@define-color accent_color {{colors.primary.dark.hex}};
+@define-color accent_fg_color {{colors.on_surface.dark.hex}};
+@define-color theme_bg_color {{colors.background.dark.hex}};
+@define-color theme_fg_color {{colors.on_surface.dark.hex}};
+@define-color theme_base_color {{colors.surface.dark.hex}};
+@define-color theme_text_color {{colors.on_surface.dark.hex}};
+@define-color theme_selected_bg_color alpha({{colors.primary.dark.hex}}, 0.22);
+@define-color theme_selected_fg_color {{colors.on_surface.dark.hex}};
+@define-color theme_unfocused_bg_color {{colors.surface.dark.hex}};
+@define-color theme_unfocused_fg_color {{colors.on_surface_variant.dark.hex}};
+@define-color theme_unfocused_selected_bg_color {{colors.secondary.dark.hex}};
+@define-color theme_unfocused_selected_fg_color {{colors.on_surface.dark.hex}};
+@define-color insensitive_bg_color {{colors.surface_variant.dark.hex}};
+@define-color insensitive_fg_color {{colors.outline.dark.hex}};
+@define-color insensitive_base_color {{colors.surface_variant.dark.hex}};
+@define-color theme_insensitive_bg_color {{colors.surface_variant.dark.hex}};
+@define-color theme_insensitive_fg_color {{colors.outline.dark.hex}};
+@define-color theme_insensitive_base_color {{colors.surface_variant.dark.hex}};
+@define-color borders {{colors.outline_variant.dark.hex}};
+@define-color unfocused_borders {{colors.outline_variant.dark.hex}};
+@define-color warning_color {{colors.tertiary.dark.hex}};
+@define-color error_color {{colors.error.dark.hex}};
+@define-color success_color {{colors.secondary.dark.hex}};
+
+window,
+.background,
+.thunar {
+  background-color: @theme_bg_color;
+  color: @theme_fg_color;
+}
+
+.thunar .sidebar,
+.thunar treeview.view,
+.thunar .view {
+  background-color: @theme_base_color;
+  color: @theme_text_color;
+}
+
+.thunar treeview.view:selected,
+.thunar .sidebar row:selected {
+  background-color: alpha(@theme_selected_bg_color, 0.55);
+  color: @theme_selected_fg_color;
+}
+
+.thunar iconview.view:selected,
+.thunar flowbox flowboxchild:selected,
+.thunar .standard-view .view:selected {
+  background-color: alpha(@theme_selected_bg_color, 0.55);
+  color: @theme_selected_fg_color;
+}
+
+.thunar .sidebar,
+.thunar .sidebar label,
+.thunar .sidebar row,
+.thunar .sidebar row label {
+  color: @theme_text_color;
+}
+
+.thunar .sidebar row:selected,
+.thunar .sidebar row:selected label,
+.thunar .sidebar row:selected image {
+  color: @theme_selected_fg_color;
+}
+
+.thunar toolbar,
+.thunar .location-bar,
+.thunar .path-bar,
+.thunar .path-bar button,
+.thunar entry,
+.thunar .linked entry {
+  background-color: alpha(@theme_base_color, 0.96);
+  color: @theme_text_color;
+  border-color: @borders;
+}
+
+.thunar treeview header button,
+.thunar treeview.view header button {
+  background-color: alpha(@theme_base_color, 0.98);
+  color: @theme_text_color;
+  border-color: @borders;
+}
+
+.thunar treeview header button:hover,
+.thunar treeview.view header button:hover {
+  background-color: alpha(@theme_selected_bg_color, 0.12);
+}
+
+.thunar statusbar,
+.thunar .statusbar,
+.thunar actionbar,
+.thunar .action-bar,
+.thunar .bottom-toolbar {
+  background-color: shade(@theme_base_color, 1.12);
+  color: @theme_text_color;
+  border-color: @borders;
+}
+
+dialog,
+.dialog,
+.message-dialog,
+.message-dialog .view,
+.message-dialog .background,
+.message-dialog box,
+.message-dialog .content-area {
+  background-color: @theme_base_color;
+  color: @theme_text_color;
+  border-color: @borders;
+}
+
+dialog headerbar,
+.message-dialog headerbar {
+  background-color: shade(@theme_base_color, 1.15);
+  color: @theme_text_color;
+  border-color: @borders;
+}
+
+button,
+dialog button,
+.message-dialog button,
+.thunar button {
+  background-color: shade(@theme_base_color, 1.12);
+  color: @theme_text_color;
+  border-color: @borders;
+}
+
+button:hover,
+dialog button:hover,
+.message-dialog button:hover,
+.thunar button:hover {
+  background-color: alpha(@accent_color, 0.18);
+  color: @theme_text_color;
+}
+
+button:active,
+dialog button:active,
+.message-dialog button:active,
+.thunar button:active {
+  background-color: alpha(@accent_color, 0.26);
+  color: @theme_text_color;
+}
+
+.message-dialog .action-area,
+.message-dialog .action-area button,
+.message-dialog .dialog-action-area button {
+  background-color: shade(@theme_base_color, 1.14);
+  color: @theme_text_color;
+  border-color: @borders;
+}
+
+.message-dialog button.suggested-action,
+.message-dialog .suggested-action {
+  background-color: alpha(@accent_color, 0.28);
+  color: @theme_text_color;
+}
+
+.message-dialog button.destructive-action,
+.message-dialog .destructive-action {
+  background-color: alpha(@error_color, 0.28);
+  color: @theme_text_color;
+}
+
+.message-dialog label,
+.message-dialog .title,
+.message-dialog .subtitle,
+.message-dialog .dialog-message,
+.message-dialog .dialog-question {
+  color: @theme_text_color;
+}
+
+menu,
+.menu,
+menuitem,
+.context-menu {
+  background-color: @theme_base_color;
+  color: @theme_text_color;
+  border-color: @borders;
+}
+
+menu menuitem:hover,
+menuitem:hover,
+.menu menuitem:hover {
+  background-color: alpha(@theme_selected_bg_color, 0.14);
+  color: @theme_text_color;
+}
+
+headerbar,
+toolbar {
+  background-color: shade(@theme_bg_color, 1.05);
+  color: @theme_fg_color;
+  border-color: @borders;
+}
