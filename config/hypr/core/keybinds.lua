@@ -17,7 +17,7 @@ end)
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen_state({ internal = 2, client = 0, action = "toggle" }))
 hl.bind("CONTROL + ALT + W", hl.dsp.exec_cmd("~/.local/bin/scripts/waybar-toggle.sh"))
 hl.bind(mainMod .. " + M", hl.dsp.exit())
-hl.bind(mainMod .. " + CONTROL + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + CONTROL + Q", hl.dsp.exec_cmd("wlogout --layout ~/.config/wlogout/layout --css ~/.config/wlogout/style.css --buttons-per-row 5 --show-binds"))
 
 -- Application shortcuts
@@ -53,10 +53,10 @@ hl.bind(mainMod .. " + CONTROL + Print", hl.dsp.exec_cmd("pkill hyprpicker || hy
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | tesseract stdin stdout | wl-copy && notify-send \"Screenshot OCR\" \"Text copied to clipboard\""))
 
 -- Move/Change window focus
-hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + CONTROL + H", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + CONTROL + L", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + CONTROL + K", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + CONTROL + J", hl.dsp.focus({ direction = "down" }))
 
 -- Swap focused window with another
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.swap({ direction = "left" }))
@@ -146,4 +146,4 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("qs msg notification-center toggle"))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("qs msg control-center toggle"))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("qs msg shell toggleBar"))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("qs msg launcher toggle"))
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.exec_cmd("qs msg keybinds toggle"))
+hl.bind(mainMod .. " + K", hl.dsp.exec_cmd("qs msg keybinds toggle"))

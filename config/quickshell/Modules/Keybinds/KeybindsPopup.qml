@@ -18,7 +18,7 @@ PanelWindow {
     color: "transparent"
 
     readonly property var allKeybinds: [
-        { category: "QuickShell", mod: "Super+Shift", key: "K", desc: "Keybinds viewer" },
+        { category: "QuickShell", mod: "Super", key: "K", desc: "Keybinds viewer" },
         { category: "QuickShell", mod: "Super", key: "A", desc: "App launcher" },
         { category: "QuickShell", mod: "Super", key: "V", desc: "Clipboard history" },
         { category: "QuickShell", mod: "Super", key: "N", desc: "Notification center" },
@@ -39,22 +39,20 @@ PanelWindow {
         { category: "Applications", mod: "Super", key: "E", desc: "File manager (thunar)" },
         { category: "Applications", mod: "Super", key: "B", desc: "Web browser (zen)" },
         { category: "Applications", mod: "Super+Ctrl", key: "V", desc: "Volume control (pavucontrol)" },
-        { category: "Applications", mod: "Super+Ctrl", key: "L", desc: "Lock screen (hyprlock)" },
+        { category: "Applications", mod: "Super", key: "L", desc: "Lock screen (hyprlock)" },
         { category: "Applications", mod: "Super+Ctrl", key: "Q", desc: "Logout (wlogout)" },
         { category: "Applications", mod: "Ctrl+Alt", key: "W", desc: "Toggle waybar" },
         { category: "Applications", mod: "Super+Ctrl", key: "T", desc: "Theme selector" },
 
-        { category: "Navigation", mod: "Super", key: "H", desc: "Focus left" },
-        { category: "Navigation", mod: "Super", key: "L", desc: "Focus right" },
-        { category: "Navigation", mod: "Super", key: "K", desc: "Focus up" },
-        { category: "Navigation", mod: "Super", key: "J", desc: "Focus down" },
+        { category: "Navigation", mod: "Super+Ctrl", key: "H", desc: "Focus left" },
+        { category: "Navigation", mod: "Super+Ctrl", key: "L", desc: "Focus right" },
+        { category: "Navigation", mod: "Super+Ctrl", key: "K", desc: "Focus up" },
+        { category: "Navigation", mod: "Super+Ctrl", key: "J", desc: "Focus down" },
         { category: "Navigation", mod: "Alt", key: "Tab", desc: "Focus down" },
         { category: "Navigation", mod: "Super+Shift", key: "H", desc: "Move window left" },
         { category: "Navigation", mod: "Super+Shift", key: "L", desc: "Move window right" },
         { category: "Navigation", mod: "Super+Shift", key: "K", desc: "Move window up" },
         { category: "Navigation", mod: "Super+Shift", key: "J", desc: "Move window down" },
-        { category: "Navigation", mod: "Super+Ctrl", key: "H", desc: "Previous in group" },
-        { category: "Navigation", mod: "Super+Ctrl", key: "L", desc: "Next in group" },
 
         { category: "Workspaces", mod: "Super", key: "1–0", desc: "Switch to workspace 1–10" },
         { category: "Workspaces", mod: "Super+Shift", key: "1–0", desc: "Move window to workspace 1–10" },
@@ -101,10 +99,10 @@ PanelWindow {
 
         { category: "ASUS ROG", mod: "", key: "XF86Launch4", desc: "Platform profile toggle (Fn+F5)" },
         { category: "ASUS ROG", mod: "", key: "XF86Launch3", desc: "Keyboard Aura mode cycle (Fn+F4)" },
-        { category: "ASUS ROG", mod: "Super+Ctrl", key: "K", desc: "Keyboard RGB theme sync" },
-        { category: "ASUS ROG", mod: "Super+Ctrl+Shift", key: "K", desc: "Keyboard LED off" },
-        { category: "ASUS ROG", mod: "Super+Ctrl", key: "G", desc: "Hybrid GPU toggle" },
-        { category: "ASUS ROG", mod: "Super+Ctrl", key: "B", desc: "Battery status notification" },
+        { category: "ASUS ROG", mod: "Super+Alt", key: "K", desc: "Keyboard RGB theme sync" },
+        { category: "ASUS ROG", mod: "Super+Alt+Shift", key: "K", desc: "Keyboard LED off" },
+        { category: "ASUS ROG", mod: "Super+Alt", key: "G", desc: "Hybrid GPU toggle" },
+        { category: "ASUS ROG", mod: "Super+Alt", key: "B", desc: "Battery status notification" },
         { category: "ASUS ROG", mod: "", key: "XF86TouchpadToggle", desc: "Toggle touchpad (Fn+F10)" }
     ]
 
