@@ -1,6 +1,5 @@
 hl.on("hyprland.start", function()
-  hl.exec_cmd("GTK_THEME=Papirus-Dark nm-applet --indicator")
-  hl.exec_cmd("blueman-applet & awww-daemon & ")
+  hl.exec_cmd("awww-daemon &")
   hl.exec_cmd("wl-paste --type text --watch cliphist store")
   hl.exec_cmd("wl-paste --type image --watch cliphist store")
   hl.exec_cmd("qs &")
