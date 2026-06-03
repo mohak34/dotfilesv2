@@ -28,6 +28,7 @@ PanelWindow {
         { category: "Window", mod: "Super", key: "Q", desc: "Close focused window" },
         { category: "Window", mod: "Super", key: "W", desc: "Toggle float" },
         { category: "Window", mod: "Super", key: "F", desc: "Toggle fullscreen" },
+        { category: "Window", mod: "Super+Shift", key: "F", desc: "Toggle fullscreen (keep URL bar)" },
         { category: "Window", mod: "Super", key: "G", desc: "Toggle group" },
         { category: "Window", mod: "Super", key: "J", desc: "Toggle split" },
         { category: "Window", mod: "Super", key: "S", desc: "Toggle special workspace (scratchpad)" },
