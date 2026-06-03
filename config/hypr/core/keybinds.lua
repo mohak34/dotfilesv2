@@ -4,7 +4,17 @@ local mainMod = "SUPER"
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + W", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + F", function()
+  local w = hl.get_active_window()
+  if not w then return end
+  local cli = tonumber(w.fullscreen_client) or 0
+  if cli == 0 then
+    hl.dispatch(hl.dsp.window.fullscreen_state({ internal = 2, client = 2, action = "set" }))
+  else
+    hl.dispatch(hl.dsp.window.fullscreen_state({ internal = 2, client = 2, action = "toggle" }))
+  end
+end)
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen_state({ internal = 2, client = 0, action = "toggle" }))
 hl.bind("CONTROL + ALT + W", hl.dsp.exec_cmd("~/.local/bin/scripts/waybar-toggle.sh"))
 hl.bind(mainMod .. " + M", hl.dsp.exit())
 hl.bind(mainMod .. " + CONTROL + L", hl.dsp.exec_cmd("hyprlock"))
