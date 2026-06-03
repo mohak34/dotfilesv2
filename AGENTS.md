@@ -102,8 +102,8 @@ Example migration:
 echo "Update hyprland config for new version"
 
 # Migration logic here
-if [[ -f ~/.config/hypr/hyprland.conf ]]; then
-  sed -i 's/old_setting/new_setting/' ~/.config/hypr/hyprland.conf
+if [[ -f ~/.config/hypr/hyprland.lua ]]; then
+  sed -i 's/old_setting/new_setting/' ~/.config/hypr/hyprland.lua
 fi
 ```
 
@@ -121,9 +121,9 @@ fi
 
 ### Refresh Pattern
 ```bash
-dotfiles-refresh-config hypr/hyprland.conf
-```
-This copies from `config/hypr/hyprland.conf` to `~/.config/hypr/hyprland.conf` with backup.
+dotfiles-refresh-config hypr/hyprland.lua
+
+This copies from `config/hypr/hyprland.lua` to `~/.config/hypr/hyprland.lua` with backup.
 
 ## Installation Phases
 

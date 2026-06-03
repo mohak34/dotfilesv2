@@ -80,15 +80,15 @@ install_configs() {
 
   if [[ "${INSTALL_ASUS:-false}" == "true" ]]; then
     touch "$HOME/.config/.dotfiles-install-asus"
-    cp "$DOTFILES_PATH/config/hypr/asus.conf" "$HOME/.config/hypr/asus.conf"
+    cp "$DOTFILES_PATH/config/hypr/asus.lua" "$HOME/.config/hypr/asus.lua"
     echo "Installed ASUS-specific hypr config"
   else
     rm -f "$HOME/.config/.dotfiles-install-asus"
-    : > "$HOME/.config/hypr/asus.conf"
+    : > "$HOME/.config/hypr/asus.lua"
   fi
 
   if [[ "${INSTALL_NVIDIA:-false}" == "true" ]]; then
-    echo "Appending NVIDIA environment variables to hyprland nvidia.conf..."
+    echo "Appending NVIDIA environment variables to hyprland nvidia.lua..."
 
     local nvidia_card="" igpu_card=""
     for card in /sys/class/drm/card[0-9]/device/vendor; do
@@ -113,13 +113,13 @@ install_configs() {
       aq_drm_devices="/dev/dri/card0:/dev/dri/card1"
     fi
 
-    cat >> "$HOME/.config/hypr/nvidia.conf" <<EOF
+    cat >> "$HOME/.config/hypr/nvidia.lua" <<EOF
 
-env = AQ_DRM_DEVICES,${aq_drm_devices}
-env = LIBVA_DRIVER_NAME,nvidia
-env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-env = NVD_BACKEND,direct
-env = WLR_NO_HARDWARE_CURSORS,1
+hl.env("AQ_DRM_DEVICES", "${aq_drm_devices}")
+hl.env("LIBVA_DRIVER_NAME", "nvidia")
+hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+hl.env("NVD_BACKEND", "direct")
+hl.env("WLR_NO_HARDWARE_CURSORS", "1")
 EOF
   fi
   

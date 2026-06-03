@@ -68,16 +68,16 @@ copy_hypr_core_only() {
     mkdir -p "$dest_dir/local"
   fi
   
-  cp "$src_dir/hyprland.conf" "$dest_dir/"
+  cp "$src_dir/hyprland.lua" "$dest_dir/"
   cp "$src_dir/hypridle.conf" "$dest_dir/"
   cp "$src_dir/hyprlock.conf" "$dest_dir/"
-  cp "$src_dir/colors.conf" "$dest_dir/"
-  cp "$src_dir/nvidia.conf" "$dest_dir/"
+  cp "$src_dir/colors.lua" "$dest_dir/"
+  cp "$src_dir/nvidia.lua" "$dest_dir/"
 
   if [[ -f "$HOME/.config/.dotfiles-install-asus" ]]; then
-    cp "$src_dir/asus.conf" "$dest_dir/"
+    cp "$src_dir/asus.lua" "$dest_dir/"
   else
-    : > "$dest_dir/asus.conf"
+    : > "$dest_dir/asus.lua"
   fi
   
   echo "Updated hypr config (core files)"

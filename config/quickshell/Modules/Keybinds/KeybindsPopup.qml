@@ -18,7 +18,7 @@ PanelWindow {
     color: "transparent"
 
     readonly property var allKeybinds: [
-        { category: "QuickShell", mod: "Super", key: "K", desc: "Keybinds viewer" },
+        { category: "QuickShell", mod: "Super+Shift", key: "K", desc: "Keybinds viewer" },
         { category: "QuickShell", mod: "Super", key: "A", desc: "App launcher" },
         { category: "QuickShell", mod: "Super", key: "V", desc: "Clipboard history" },
         { category: "QuickShell", mod: "Super", key: "N", desc: "Notification center" },

@@ -64,6 +64,7 @@ alias wdis="warp-cli disconnect"
 alias wstat="warp-cli status"
 alias lg="lazygit"
 alias oc="OPENCODE_EXPERIMENTAL=1 opencode"
+alias zed="zeditor"
 
 # LLM Proxy management (fallback)
 alias proxy-start='tmux new-session -d -s llm-proxy -c ~/Workspace/Projects/LLM-API-Key-Proxy \
@@ -92,7 +93,7 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(fzf --zsh)"
 
-[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+. "$HOME/.local/bin/env"
 
 
 
@@ -109,7 +110,7 @@ export PATH="$PATH:$GEM_HOME/bin"
 
 ## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall
-[[ -f "$HOME/.dart-cli-completion/zsh-config.zsh" ]] && . "$HOME/.dart-cli-completion/zsh-config.zsh" || true
+[[ -f $HOME/.dart-cli-completion/zsh-config.zsh ]] && . $HOME/.dart-cli-completion/zsh-config.zsh || true
 ## [/Completion]
 
 
@@ -132,3 +133,4 @@ export PATH=$HOME/.opencode/bin:$PATH
 # Dotfiles v2
 export DOTFILES_PATH="$HOME/.local/share/dotfilesv2"
 export PATH="$DOTFILES_PATH/bin:$PATH"
+export PATH=~/bin:$PATH

@@ -1,0 +1,4 @@
+-- nvidia.lua - NVIDIA-specific Hyprland environment variables
+-- This file is loaded by hyprland.lua unconditionally.
+-- On non-NVIDIA systems this file is empty (default).
+-- NVIDIA vars are appended here automatically during install if INSTALL_NVIDIA=true.
