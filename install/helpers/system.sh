@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 
 is_arch_linux() {
   [[ -f /etc/arch-release ]]

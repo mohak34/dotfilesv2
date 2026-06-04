@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 
 install_nvidia_packages() {
   local package_file="$DOTFILES_PATH/packages/nvidia.txt"

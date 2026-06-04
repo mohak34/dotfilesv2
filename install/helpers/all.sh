@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 
 source "$DOTFILES_INSTALL/helpers/logging.sh"
 source "$DOTFILES_INSTALL/helpers/system.sh"

@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 
 source "$DOTFILES_INSTALL/helpers/all.sh"
 source "$DOTFILES_INSTALL/preflight/checks.sh"

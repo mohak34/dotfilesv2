@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 
 install_oh_my_zsh() {
   if [[ -d "$HOME/.oh-my-zsh" ]]; then

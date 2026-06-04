@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 
 run_post_install() {
   source "$DOTFILES_INSTALL/post-install/finalize.sh" || true

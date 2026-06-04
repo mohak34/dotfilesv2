@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 
 install_go() {
   if command -v go >/dev/null 2>&1; then

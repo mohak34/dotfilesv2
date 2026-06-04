@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 
 pkg_is_installed() {
   pacman -Q "$1" >/dev/null 2>&1

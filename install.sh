@@ -68,6 +68,7 @@ show_installation_summary() {
 }
 
 main() {
+  set +e
   log_info "Starting Dotfiles v2 installation..."
 
   run_preflight || track_error "Preflight checks failed"

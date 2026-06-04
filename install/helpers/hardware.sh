@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 
 hw_nvidia() {
   lspci | grep -iq nvidia
